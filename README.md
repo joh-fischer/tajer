@@ -2,6 +2,12 @@
 
 Taller [taˈʎer] is the spanish word for *workshop*, a good place to store tools, such as useful (`PyTorch`) functions.
 
+You can easily install it with
+
+```
+pip3 install git+https://github.com/joh-fischer/taller.git#egg=taller
+```
+
 ## Utils
 
 See `taller.utils.py` for more information... 
