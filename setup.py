@@ -8,7 +8,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="taller",
-    version="1.1",
+    version="1.2",
     packages=find_packages(),
     url="https://github.com/joh-fischer/taller",
     license="MIT License",
