@@ -1,7 +1,6 @@
-# Collection of useful (PyTorch) functions
+# taller
 
-
-This is a collection of useful functions I use for `PyTorch` model building, training, and logging.
+Taller [taˈʎer] is the spanish word for *workshop*, a good place to store tools, such as useful (`PyTorch`) functions.
 
 ## Utils
 
