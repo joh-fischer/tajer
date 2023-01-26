@@ -27,7 +27,7 @@ import yaml
 import csv
 import os
 import torch
-from datetime import datetime
+import datetime
 from torch.utils.tensorboard import SummaryWriter
 
 
@@ -114,7 +114,7 @@ class Logger:
             If true, creates a `SummaryWriter` instance to write to tensorboard.
         """
         self.exp_name = exp_name if exp_name else ''
-        self.timestamp = datetime.now().strftime('%y-%m-%d_%H%M%S') if timestamp else ''
+        self.timestamp = datetime.datetime.now().strftime('%y-%m-%d_%H%M%S') if timestamp else ''
         self.log_dir = os.path.join(log_dir, self.exp_name, self.timestamp)
 
         if not os.path.exists(self.log_dir):
