@@ -37,8 +37,10 @@ def convert_size(size_bytes):
 
 # size of pytorch tensors
 
-def getsize(tensor: torch.Tensor):
+def get_tensor_size(tensor: torch.Tensor, return_bytes=False):
     size = tensor.element_size() * tensor.nelement()
+    if return_bytes:
+        return size
     return convert_size(size)
 
 
@@ -187,5 +189,5 @@ if __name__ == "__main__":
     print(f"{'timing()':<18}: {timing()}")
     print(f"{'timer(s, e)':<18}: {timer(time.time(), time.time() + 900)}")
     
-    print(f"{'getsize()':<18}: {getsize(torch.randn((4096, 1024)))}")
+    print(f"{'getsize()':<18}: {get_tensor_size(torch.randn((4096, 1024)))}")
     print(f"{'count_parameters()':<18}: {count_parameters(torch.nn.Conv2d(128, 256, 5))}")
