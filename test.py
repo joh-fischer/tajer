@@ -11,3 +11,5 @@ from taller.nn import TimeEmbedding
 from taller.checkpointing import checkpoint
 
 from taller.logging import get_logger, Logger
+
+dist.init_process_group(0, 1)
