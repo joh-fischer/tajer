@@ -1,0 +1,10 @@
+torch
+einops
+termcolor
+pyyaml
+pandas
+numpy
+torchvision
+pillow
+setuptools
+tensorboard

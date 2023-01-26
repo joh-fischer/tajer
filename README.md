@@ -44,7 +44,7 @@ This function returns a logger that prints to the command line and writes
 all outputs also to a text log file.
 
 ```python
-from taller.logging import get_logger
+from taller.log import get_logger
 
 logger = get_logger('log_dir', dist_rank=0)
 
@@ -58,7 +58,7 @@ Here is a small example of how it works.
 
 ```python
 import torch
-from taller.logging import Logger
+from taller.log import Logger
 
 logger = Logger('./logs',
                 # create log-folder: './logs/model1/22-07-07_121028'
@@ -70,7 +70,7 @@ logger.log_hparams({'lr': 1e-4,
                     'optimizer': 'Adam'})
 
 for epoch in range(2):
-    logger.init_epoch(epoch)     # initialize epoch to aggregate values
+    logger.init_epoch(epoch)  # initialize epoch to aggregate values
 
     # training
     for step in range(4):

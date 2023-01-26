@@ -1,7 +1,10 @@
 venv
 .idea
 *__pycache__*
+dist
 
+*.egg-info
+
+# custom folders
 sandbox
-
 *logs

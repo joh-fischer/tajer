@@ -1,7 +1,7 @@
-from logger_class import Logger
 import os
 import torch
 import pandas as pd
+from logger import Logger
 
 
 experiment_name = 'model1'
