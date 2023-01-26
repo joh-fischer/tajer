@@ -1,4 +1,4 @@
-import torch as th
+import torch
 import torch.nn as nn
 
 
@@ -22,26 +22,26 @@ def checkpoint(func, inputs, params, flag):
         return func(*inputs)
 
 
-class CheckpointFunction(th.autograd.Function):
+class CheckpointFunction(torch.autograd.Function):
     @staticmethod
     def forward(ctx, run_function, length, *args):
         ctx.run_function = run_function
         ctx.input_tensors = list(args[:length])
         ctx.input_params = list(args[length:])
-        with th.no_grad():
+        with torch.no_grad():
             output_tensors = ctx.run_function(*ctx.input_tensors)
         return output_tensors
 
     @staticmethod
     def backward(ctx, *output_grads):
         ctx.input_tensors = [x.detach().requires_grad_(True) for x in ctx.input_tensors]
-        with th.enable_grad():
+        with torch.enable_grad():
             # Fixes a bug where the first op in run_function modifies the
             # Tensor storage in place, which is not allowed for detach()'d
             # Tensors.
             shallow_copies = [x.view_as(x) for x in ctx.input_tensors]
             output_tensors = ctx.run_function(*shallow_copies)
-        input_grads = th.autograd.grad(
+        input_grads = torch.autograd.grad(
             output_tensors,
             ctx.input_tensors + ctx.input_params,
             output_grads,
@@ -51,3 +51,29 @@ class CheckpointFunction(th.autograd.Function):
         del ctx.input_params
         del output_tensors
         return (None, None) + input_grads
+
+
+# Dummy class just for demonstration purposes
+class Dummy(nn.Module):
+    def __init__(self, in_ch, out_ch, use_checkpoint):
+        super().__init__()
+        self.use_checkpoint = use_checkpoint
+        self.net = nn.Linear(in_ch, out_ch)
+
+    def _forward(self, x: torch.Tensor, emb=None):
+        out = self.net(x)
+        return out
+
+    def forward(self, x: torch.Tensor, emb=None):
+        return checkpoint(
+            self._forward, (x, emb), self.parameters(), self.use_checkpoint
+        )
+
+
+if __name__ == "__main__":
+    model = Dummy(in_ch=128, out_ch=256, use_checkpoint=True)
+
+    ipt = torch.randn((32, 128))
+    out = model(ipt)
+    print("Input:", ipt.shape)
+    print("Output:", out.shape)
