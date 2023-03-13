@@ -34,7 +34,7 @@ from torch.utils.tensorboard import SummaryWriter
 # command line & txt file logger
 
 @functools.lru_cache()
-def get_logger(log_dir, dist_rank=0):
+def get_logger(log_dir='./logs', dist_rank=0, prefix=None):
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
     timestamp = datetime.datetime.now().strftime('%y%m%d-%H%M%S')
@@ -46,10 +46,14 @@ def get_logger(log_dir, dist_rank=0):
     # create formatter
     fmt = '[%(asctime)s] (%(filename)s %(lineno)d): %(levelname)s %(message)s'
     color_fmt = colored('[%(asctime)s]', 'green') + \
-                colored('(%(filename)s %(lineno)d)', 'yellow') + ': %(levelname)s %(message)s'
+                colored('(%(filename)s %(lineno)d)', 'yellow') + \
+                ': %(levelname)s %(message)s'
 
     # file writer
-    fh = logging.FileHandler(os.path.join(log_dir, 'log_' + timestamp + '.txt'))
+    prefix = prefix + "_" if prefix is not None else ""
+    filename = f'log_{prefix}{timestamp}.txt'
+    filepath = os.path.join(log_dir, filename)
+    fh = logging.FileHandler(filepath)
     fh.setLevel(logging.INFO)
     fh.setFormatter(logging.Formatter(fmt=fmt, datefmt='%Y-%m-%d %H:%M:%S'))
     logger.addHandler(fh)
@@ -81,12 +85,14 @@ class Aggregator:
 
 class Dummy:
     """ Mock class for tensorboard `SummaryWriter` """
+
     def __init__(self, *args, **kwargs):
         pass
 
     def __getattr__(self, item):
         def func(*args, **kwargs):
             pass
+
         return func
 
 
