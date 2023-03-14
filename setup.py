@@ -8,7 +8,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setup(
     name="tajer",
-    version="1.2.1",
+    version="1.2.2",
     packages=find_packages(),
     url="https://github.com/joh-fischer/tajer",
     license="MIT License",
