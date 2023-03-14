@@ -15,22 +15,22 @@ See `taller.utils.py` for more information...
 ## Neural network layers
 
 ```python
-from taller.nn import ResidualBlock
+from tajer.nn import ResidualBlock
 
 # depthwise separable convolution (https://arxiv.org/abs/1704.04861)
-from taller.nn import DepthwiseSeparableConv2D
+from tajer.nn import DepthwiseSeparableConv2D
 
 # attention layers (https://arxiv.org/abs/1706.03762)
-from taller.nn import MultiHeadAttention, ConvAttention
+from tajer.nn import MultiHeadAttention, ConvAttention
 
 # linear attention (https://arxiv.org/abs/1812.01243)
-from taller.nn import LinearConvAttention
+from tajer.nn import LinearConvAttention
 
 # Convolutional block attention module (https://arxiv.org/abs/1807.06521)
-from taller.nn import CBAM
+from tajer.nn import CBAM
 
 # 1D sinusoidal time embedding (https://arxiv.org/abs/1706.03762)
-from taller.nn import TimeEmbedding
+from tajer.nn import TimeEmbedding
 ```
 
 ## Distributed PyTorch
@@ -50,7 +50,7 @@ This function returns a logger that prints to the command line and writes
 all outputs also to a text log file.
 
 ```python
-from taller.log import get_logger
+from tajer.log import get_logger
 
 logger = get_logger('log_dir', dist_rank=0)
 
@@ -64,7 +64,7 @@ Here is a small example of how it works.
 
 ```python
 import torch
-from taller.log import Logger
+from tajer.log import Logger
 
 logger = Logger('./logs',
                 # create log-folder: './logs/model1/22-07-07_121028'

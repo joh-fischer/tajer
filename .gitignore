@@ -5,6 +5,8 @@ dist
 
 *.egg-info
 
+*.DS_Store
+
 # custom folders
 sandbox
 *logs

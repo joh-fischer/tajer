@@ -7,7 +7,7 @@ install_requires = (this_directory / "requirements.txt").read_text().splitlines(
 long_description = (this_directory / "README.md").read_text()
 
 setup(
-    name="taller",
+    name="tajer",
     version="1.2.1",
     packages=find_packages(),
     url="https://github.com/joh-fischer/taller",
