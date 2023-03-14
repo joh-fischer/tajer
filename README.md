@@ -5,12 +5,12 @@ Taller [taˈʎer] is the spanish word for *workshop*, a good place to store tool
 You can easily install it with
 
 ```
-pip3 install git+https://github.com/joh-fischer/taller.git#egg=taller
+pip3 install git+https://github.com/joh-fischer/tajer.git#egg=tajer
 ```
 
 ## Utils
 
-See `taller.utils.py` for more information... 
+See `tajer.utils.py` for more information... 
 
 ## Neural network layers
 
@@ -35,9 +35,9 @@ from tajer.nn import TimeEmbedding
 
 ## Distributed PyTorch
 
-In `taller/distributed/min_DDP.py` you can find a minimum working example of single-node,
+In `tajer/distributed/min_DDP.py` you can find a minimum working example of single-node,
 multi-gpu training with PyTorch, as well as a `README.md` that shows you how to use it.
-All communication between processes, as well as the multi-process spawn is handled by
+All communication between processes, as well as the multiprocess spawn is handled by
 the functions defined in `distributed_pytorch.py`.
 
 

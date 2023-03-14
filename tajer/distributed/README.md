@@ -8,7 +8,7 @@ in `distributed.py`.
 ```python
 import torch
 import torch.nn as nn
-import distributed as dist
+import tajer.distributed as dist
 
 from torch.utils.data import DataLoader
 from torch.nn.parallel import DistributedDataParallel as DDP
