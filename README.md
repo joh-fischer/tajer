@@ -1,4 +1,4 @@
-# taller
+# tajer
 
 Taller [taˈʎer] is the spanish word for *workshop*, a good place to store tools, such as useful (`PyTorch`) functions.
 
