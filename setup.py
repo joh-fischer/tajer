@@ -10,7 +10,7 @@ setup(
     name="tajer",
     version="1.2.1",
     packages=find_packages(),
-    url="https://github.com/joh-fischer/taller",
+    url="https://github.com/joh-fischer/tajer",
     license="MIT License",
     author="Johannes S. Fischer",
     description="Collection of useful (PyTorch) functions.",
