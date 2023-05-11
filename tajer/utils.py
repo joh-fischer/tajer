@@ -56,6 +56,16 @@ def timing():
     return datetime.datetime.now().strftime(f'%H:%M:%S.%f')[:-3]
 
 
+class Timer:
+    def __enter__(self):
+        self.start = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.end = time.time()
+        self.time = timer(self.start, self.end)
+        
+
 # pytorch model parameter count
 
 def count_parameters(model, return_int: bool = False):
